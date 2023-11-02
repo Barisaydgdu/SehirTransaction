@@ -39,7 +39,7 @@ namespace SehirTransaction
                     foreach (var item in lstIlceler.Items)
                     {
                         Ilce yeniIlce = new Ilce();
-                        yeniIlce.IlId = kaydedilenIlID;
+                        yeniIlce.IlId = kaydedilenIlID;  
                         yeniIlce.IlceAd = item.ToString();
                         vt.Ilce.Add(yeniIlce);
                         vt.SaveChanges();
