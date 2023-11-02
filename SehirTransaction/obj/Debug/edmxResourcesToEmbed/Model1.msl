@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SehirlerModelStoreContainer" CdmEntityContainer="SehirlerEntities1">
+    <EntitySetMapping Name="Il">
+      <EntityTypeMapping TypeName="SehirlerModel.Il">
+        <MappingFragment StoreEntitySet="Il">
+          <ScalarProperty Name="IlID" ColumnName="IlID" />
+          <ScalarProperty Name="IlAd" ColumnName="IlAd" />
+          <ScalarProperty Name="IlPlaka" ColumnName="IlPlaka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ilce">
+      <EntityTypeMapping TypeName="SehirlerModel.Ilce">
+        <MappingFragment StoreEntitySet="Ilce">
+          <ScalarProperty Name="IlceID" ColumnName="IlceID" />
+          <ScalarProperty Name="IlId" ColumnName="IlId" />
+          <ScalarProperty Name="IlceAd" ColumnName="IlceAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

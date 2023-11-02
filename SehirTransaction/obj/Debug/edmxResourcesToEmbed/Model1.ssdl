@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SehirlerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Il">
+    <Key>
+      <PropertyRef Name="IlID" />
+    </Key>
+    <Property Name="IlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IlAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IlPlaka" Type="nchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ilce">
+    <Key>
+      <PropertyRef Name="IlceID" />
+    </Key>
+    <Property Name="IlceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IlId" Type="int" Nullable="false" />
+    <Property Name="IlceAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Ilce_Il">
+    <End Role="Il" Type="Self.Il" Multiplicity="1" />
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Il">
+        <PropertyRef Name="IlID" />
+      </Principal>
+      <Dependent Role="Ilce">
+        <PropertyRef Name="IlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SehirlerModelStoreContainer">
+    <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ilce" EntityType="Self.Ilce" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Ilce_Il" Association="Self.FK_Ilce_Il">
+      <End Role="Il" EntitySet="Il" />
+      <End Role="Ilce" EntitySet="Ilce" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

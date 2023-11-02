@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SehirlerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Il">
+    <Key>
+      <PropertyRef Name="IlID" />
+    </Key>
+    <Property Name="IlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IlAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IlPlaka" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ilce" Relationship="Self.FK_Ilce_Il" FromRole="Il" ToRole="Ilce" />
+  </EntityType>
+  <EntityType Name="Ilce">
+    <Key>
+      <PropertyRef Name="IlceID" />
+    </Key>
+    <Property Name="IlceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IlId" Type="Int32" Nullable="false" />
+    <Property Name="IlceAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Il" Relationship="Self.FK_Ilce_Il" FromRole="Ilce" ToRole="Il" />
+  </EntityType>
+  <Association Name="FK_Ilce_Il">
+    <End Role="Il" Type="Self.Il" Multiplicity="1" />
+    <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Il">
+        <PropertyRef Name="IlID" />
+      </Principal>
+      <Dependent Role="Ilce">
+        <PropertyRef Name="IlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SehirlerEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Il" EntityType="Self.Il" />
+    <EntitySet Name="Ilce" EntityType="Self.Ilce" />
+    <AssociationSet Name="FK_Ilce_Il" Association="Self.FK_Ilce_Il">
+      <End Role="Il" EntitySet="Il" />
+      <End Role="Ilce" EntitySet="Ilce" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
